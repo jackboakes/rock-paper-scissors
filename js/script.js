@@ -20,6 +20,9 @@ function getHumanChoice() {
     return window.prompt("Enter rock, paper, or scissors:");
 }
 
+var humanScore = 0;
+var computerScore = 0;
+
 function playRound(humanChoice, computerChoice) {
     humanChoice.toLowerCase();
     let result = "failed play round";
@@ -60,19 +63,16 @@ function playRound(humanChoice, computerChoice) {
     console.log(result);
 }
 
-var humanScore = 0;
-var computerScore = 0;
-
 function playGame()
 {
-    const computerSelection = getComputerChoice();
-    const humanSelection = getHumanChoice();
+    while(1)
+    {
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice();
 
-    playRound(humanSelection, computerSelection);
-    console.log(`Human Score: ${humanScore} Computer Score: ${computerScore}`);
+        playRound(humanSelection, computerSelection, humanScore, computerScore);
+        console.log(`Human Score: ${humanScore} Computer Score: ${computerScore}`);
+    }
 }
 
-while(1)
-{
-    playGame();
-}
+playGame();
